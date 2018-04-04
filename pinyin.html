@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>输入汉字获取拼音</title>
+</head>
+<body>
+<input type="text" value="输入汉字获取拼音" id="input"/>
+<button id="btn">获取拼音</button>
+<p>结果：<span id="result"></span></p>
+<p>首字母结果：<span id="first-result"></span></p>
+
+<p>转为大写和指定分隔符</p>
+<p>结果：<span id="upper-case-result"></span></p>
+<p>首字母结果：<span id="upper-case-first-result"></span></p>
+<script src="js/pinyin.js"></script>
+<script>
+  var input = document.querySelector("#input")
+  var btn = document.querySelector("#btn")
+  var result = document.querySelector("#result")
+  var firstResult = document.querySelector("#first-result")
+  var upperCaseResult = document.querySelector("#upper-case-result")
+  var upperCaseFirstResult = document.querySelector("#upper-case-first-result")
+  btn.addEventListener("click", function () {
+    result.innerText = getPinYin(input.value);
+    firstResult.innerText = getPinYinFirstCharacter(input.value);
+    upperCaseResult.innerText = getPinYin(input.value, "-", true);
+    upperCaseFirstResult.innerText = getPinYinFirstCharacter(input.value, "-", true);
+  })
+  // 打开时候执行一次
+  btn.click();
+</script>
+</body>
+</html>
